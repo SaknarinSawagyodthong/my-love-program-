@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Letter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #fce4ec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      position: relative;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      width: 300px;
+    }
+
+    .letter {
+      position: relative;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      color: #c0392b;
+      font-weight: bold;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .letter img {
+      width: 30px;
+      margin-bottom: 10px;
+    }
+
+    .envelope {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 120px;
+      background-color: #e74c3c;
+      clip-path: polygon(50% 0%, 100% 50%, 0 50%);
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 180px;
+      height: 120px;
+      background-color: #e74c3c;
+      clip-path: polygon(0 0, 50% 50%, 100% 0%);
+    }
+
+    .shadow {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      filter: blur(5px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="letter">
+      <img src="https://img.icons8.com/ios-filled/50/fa314a/like--v1.png" alt="Heart Icon">
+      <p>I Love You <br>จุ๊บบๆๆๆๆ</p>
+      <img src="https://img.icons8.com/color/48/000000/sunflower.png" alt="Sunflower Icon">
+    </div>
+    <div class="envelope"></div>
+    <div class="shadow"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loveflix</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: red;
+            margin-bottom: 40px;
+        }
+
+        .profiles {
+            display: flex;
+            gap: 20px;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .profile img:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-name {
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            background: black;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .modal-content iframe {
+            width: 100%;
+            height: 350px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .next-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #e50914;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .next-button:hover {
+            background-color: #d10813;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">LOVEFLIX</div>
+    <div class="profiles">
+        <!-- Profile 1 -->
+        <div class="profile" onclick="openVideo('love1.mp4')">
+            <img src="32989.jpg" alt="Profile 1">
+            <div class="profile-name">User 1</div>
+        </div>
+
+        <!-- Profile 2 -->
+        <div class="profile" onclick="openVideo('love2.mp4')">
+            <img src="33056.jpg" alt="Profile 2">
+            <div class="profile-name">User 2</div>
+        </div>
+
+        <!-- Profile 3 -->
+        <div class="profile" onclick="openVideo('เพลง.mp4')">
+            <img src="7777.jpg" alt="Profile 3">
+            <div class="profile-name">User 3</div>
+        </div>
+    </div>
+
+    <!-- Button to next page -->
+    <a href="nextlove.html" class="next-button">ไปหน้าต่อไป</a>
+
+    <!-- Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeVideo()">×</button>
+            <iframe id="videoPlayer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        function openVideo(videoUrl) {
+            const modal = document.getElementById('videoModal');
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = videoUrl + "?autoplay=1"; // เพิ่ม autoplay ให้เริ่มเล่นทันที
+            modal.classList.add('active');
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = ""; // ล้าง URL เพื่อหยุดเล่นวิดีโอ
+            modal.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
