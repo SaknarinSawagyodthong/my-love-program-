@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-color: #ef0e0e;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            position: relative;
+        }
+
+        input[type="password"] {
+            font-size: 18px;
+            padding: 10px;
+            width: 150px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #0c0108;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #eb02d4;
+        }
+
+        .heart {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #ff4d8b;
+            left: 50%;
+            top: 50%;
+            transform: rotate(-45deg);
+            animation: float 6s linear infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #ff4d8b;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -20px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 20px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: rotate(-45deg) translateY(100vh) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(-45deg) translateY(-150vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+
+    <script>
+        function validatePin(event) {
+            event.preventDefault();
+            const inputPin = document.getElementById('pin').value;
+            const correctPin = "200424";
+
+            if (inputPin === correctPin) {
+                alert('รหัสถูกต้อง! กำลังไปหน้าต่อไป...');
+                window.location.href = "nextpage.html";
+            } else {
+                alert('รหัสไม่ถูกต้อง! กรุณาลองใหม่อีกครั้ง.');
+            }
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.opacity = Math.random();
+                heart.style.transform = `rotate(-45deg) scale(${Math.random() * 0.6 + 0.4})`;
+                document.body.appendChild(heart);
+            }
+        }
+
+        window.onload = createHearts;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>กรุณาใส่รหัสผ่าน</h2>
+        <form onsubmit="validatePin(event)">
+            <input type="password" id="pin" maxlength="6" placeholder="รหัสแห่งความรัก" required>
+            <br>
+            <button type="submit">ยืนยัน</button>
+        </form>
+    </div>
+</body>
+</html>
